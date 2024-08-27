@@ -1,8 +1,5 @@
 package com.pharmacy.jpa.dao;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.jpa.JpaTemplate;
@@ -18,9 +15,7 @@ public class SubjectDao {
 	@Autowired
 	private JpaTemplate jpaTemplate;
 	
-	@PersistenceContext
-	private EntityManager entityManager;
-
+	
 	@Transactional(readOnly = false)
 	public void saveSubject(SubjectDto subjectDto) {
 		Subject dao = new Subject();
@@ -35,5 +30,7 @@ public class SubjectDao {
 		BeanUtils.copyProperties(subject, subjectDto);
 		return subjectDto;
 	}
+	
+	
 
 }

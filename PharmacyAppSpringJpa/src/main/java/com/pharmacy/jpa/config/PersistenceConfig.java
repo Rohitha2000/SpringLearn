@@ -4,7 +4,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +18,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 @PropertySource("classpath:application.properties")
-@ComponentScan(basePackages = { "com.pharmacy.jpa.dao" })
+@ComponentScan(basePackages = { "com.pharmacy.jpa.repositories" })
 public class PersistenceConfig {
 	@Autowired
 	private Environment environment;
@@ -55,7 +54,7 @@ public class PersistenceConfig {
 	}
 
 	@Bean
-	public PlatformTransactionManager jpPlatformTransactionManager(EntityManagerFactory entityManagerFactory) {
+	public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
 		return new JpaTransactionManager(entityManagerFactory);
 	}
 
