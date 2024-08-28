@@ -4,7 +4,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.ManyToAny;
 
 @Table(name = "subject")
 @Entity
@@ -23,7 +26,7 @@ public class Subject {
 	protected String semester;
 	@Column(name = "course")
 	protected String course;
-
+	
 	public int getId() {
 		return Id;
 	}
